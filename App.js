@@ -13,7 +13,9 @@ const Tab = createBottomTabNavigator();
 
 const ExpensesOverview = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{
+      
+    }}>
         <Tab.Screen name="Recent Expenses" component={RecentExpenses}/>
         <Tab.Screen name="AllExpenses" component={AllExpenses}/>
     </Tab.Navigator>
@@ -27,7 +29,9 @@ export default function App() {
       <NavigationContainer>
           <Stack.Navigator initialRouteName='ExpensesOverview'>
             <Stack.Screen name='ManageExpense' component={ManageExpenses}/>
-            <Stack.Screen name='ExpensesOverview' component={ExpensesOverview}/>
+            <Stack.Screen name='ExpensesOverview' component={ExpensesOverview} options={{
+              headerShown: false
+            }}/>
           </Stack.Navigator>
       </NavigationContainer>
     </>
