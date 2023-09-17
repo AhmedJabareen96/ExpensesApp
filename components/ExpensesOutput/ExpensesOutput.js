@@ -31,7 +31,7 @@ const DUMMY_EXPENSES = [
     },
     {
         id:'e5',
-        description: 'Another bol',
+        description: 'Another book',
         amount: 15.99,
         date: new Date('2023-02-10')
     }
@@ -51,7 +51,9 @@ const ExpensesOutput = ({ expenses, expensesPeriod}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 12,
+        paddingHorizontal: 12,
+        paddingTop: 12,
+        paddingBottom: 0,
         backgroundColor: GlobalStyles.colors.primary700
     }
 });
