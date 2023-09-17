@@ -6,6 +6,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import ManageExpenses from './screens/ManageExpenses';
 import RecentExpenses from './screens/RecentExpenses';
 import AllExpenses from './screens/AllExpenses';
+import { GlobalStyles } from './constants/styles'
+import {Ionicons} from '@expo/vector-icons'
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -14,10 +16,34 @@ const Tab = createBottomTabNavigator();
 const ExpensesOverview = () => {
   return (
     <Tab.Navigator screenOptions={{
-      
+      headerStyle: {
+        backgroundColor: GlobalStyles.colors.primary500
+      },
+      headerTintColor: 'white',
+      tabBarStyle: {
+        backgroundColor: GlobalStyles.colors.primary500
+      },
+      tabBarActiveTintColor: GlobalStyles.colors.accent500,
+      tabBarInactiveTintColor: 'white'
     }}>
-        <Tab.Screen name="Recent Expenses" component={RecentExpenses}/>
-        <Tab.Screen name="AllExpenses" component={AllExpenses}/>
+        <Tab.Screen name="Recent Expenses" component={RecentExpenses} options={
+          {
+            title: 'Recent Expenses',
+            tabBarLabel:'Recent',
+            tabBarIcon: ({ color, size }) => {
+              return <Ionicons name='hourglass' size={size} color={color}/>
+            }
+          }
+        }/>
+        <Tab.Screen name="AllExpenses" component={AllExpenses} options={{
+          
+            title: 'All Expenses',
+            tabBarLabel:'All Expenses',
+            tabBarIcon: ({ color, size }) => {
+              return <Ionicons name='calendar' size={size} color={color}/>
+            }
+          
+        }}/>
     </Tab.Navigator>
   );
 }
@@ -31,6 +57,7 @@ export default function App() {
             <Stack.Screen name='ManageExpense' component={ManageExpenses}/>
             <Stack.Screen name='ExpensesOverview' component={ExpensesOverview} options={{
               headerShown: false
+              
             }}/>
           </Stack.Navigator>
       </NavigationContainer>
