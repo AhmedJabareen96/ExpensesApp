@@ -3,9 +3,7 @@ import React from 'react'
 
 const ManageExpenses = () => {
   return (
-    <View>
       <Text>ManageExpenses</Text>
-    </View>
   )
 }
 
