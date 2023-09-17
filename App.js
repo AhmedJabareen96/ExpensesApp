@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator();
 
 const ExpensesOverview = () => {
   return (
-    <Tab.Navigator screenOptions={{
+    <Tab.Navigator screenOptions={ ({ navigation}) => ({
       headerStyle: {
         backgroundColor: GlobalStyles.colors.primary500
       },
@@ -28,10 +28,11 @@ const ExpensesOverview = () => {
       tabBarInactiveTintColor: 'white',
       headerRight: ({ tintColor}) => {
         return <IconButton icon='add' size={24} color={tintColor} 
-          onPress={() => console.log("pressed!")}
+          onPress={() => navigation.navigate('ManageExpense')}
         />
       }
-    }}>
+    })} 
+    >
         <Tab.Screen name="Recent Expenses" component={RecentExpenses} options={
           {
             title: 'Recent Expenses',
@@ -47,7 +48,8 @@ const ExpensesOverview = () => {
             tabBarLabel:'All Expenses',
             tabBarIcon: ({ color, size }) => {
               return <Ionicons name='calendar' size={size} color={color}/>
-            }
+            },
+         
           
         }}/>
     </Tab.Navigator>
