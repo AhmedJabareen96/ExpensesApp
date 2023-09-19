@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import React, { useContext, useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import IconButton from '../components/UI/IconButton';
 import { GlobalStyles } from '../constants/styles';
 import CustomButton from '../components/UI/CustomButton';
+import {ExpensesContext} from '../context/expenses-context'
 
 const ManageExpenses = ({ route, navigation }) => {
   
@@ -11,9 +12,10 @@ const ManageExpenses = ({ route, navigation }) => {
 
   // if editedExpenseId is defined then we are in editting mode
   const isEditing = !!editedExpenseId // turn into boolean
-
+  const expensesCtx = useContext(ExpensesContext);
 
   function deleteExpenseHander() {
+    expensesCtx.deleteExpense(editedExpenseId);
     navigation.goBack();
   }
 
@@ -22,6 +24,9 @@ const ManageExpenses = ({ route, navigation }) => {
   }
 
   function confirmHandler() {
+    if(isEditing){
+      expensesCtx.updateExpense()
+    }
     navigation.goBack();
   }
 
