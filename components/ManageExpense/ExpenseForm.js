@@ -9,17 +9,19 @@ const ExpenseForm = () => {
     }
   return (
 
-      <View>
-        <Input label="amount" textInputConfig={{
+      <View style={styles.formStyle}>
+        <View style={styles.fieldContainer}>
+        <Input style={styles.rowInput} label="amount" textInputConfig={{
             keyboardType: 'decimal-pad',
             onChangeText: amountChangeHandler
         }}/>
-        <Input label="date" textInputConfig={{
+        <Input style={styles.rowInput} label="date" textInputConfig={{
             placeholder: 'yyyy-mm-dd',
             maxLength: 10,
             onChangeText: () => {}
 
         }}/>
+        </View>
         <Input label="description" textInputConfig={{
             multiline: true,
             numberOfLines: 5,
@@ -29,6 +31,19 @@ const ExpenseForm = () => {
     
   )
 }
+
+const styles = StyleSheet.create({
+    formStyle: {
+        margin: 2
+    },
+    fieldContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    rowInput: {
+        flex: 1
+    }
+});
 
 
 

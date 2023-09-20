@@ -2,9 +2,9 @@ import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React from 'react'
 import { GlobalStyles } from '../../constants/styles';
 
-const Input = ({label, textInputConfig}) => {
+const Input = ({label, style, textInputConfig}) => {
   return (
-    <View style={styles.inputContainer}>
+    <View style={[styles.inputContainer, style]}>
       <Text style={styles.label}>{label}</Text>
       <TextInput style={styles.input} {...textInputConfig}/>
     </View>
@@ -14,7 +14,7 @@ const Input = ({label, textInputConfig}) => {
 const styles = StyleSheet.create({
     inputContainer: {
         marginHorizontal: 4,
-        marginVertical: 12
+        marginVertical: 12,
     },
     label: {
         fontSize: 12,
