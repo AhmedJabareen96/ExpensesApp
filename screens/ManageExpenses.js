@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
 import React, { useContext, useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import IconButton from '../components/UI/IconButton';
 import { GlobalStyles } from '../constants/styles';
 import CustomButton from '../components/UI/CustomButton';
 import {ExpensesContext} from '../context/expenses-context'
+import ExpenseForm from '../components/ManageExpense/ExpenseForm';
 
 const ManageExpenses = ({ route, navigation }) => {
   
@@ -50,6 +51,7 @@ const ManageExpenses = ({ route, navigation }) => {
 
   return (
       <View style={styles.container}>
+        <ExpenseForm/>
         <View style={styles.buttonContainer}>
           <CustomButton style={styles.button} mode='flat' onPress={cancelHandler}> Cancel </CustomButton>
           <CustomButton style={styles.button} mode='' onPress={confirmHandler}> {isEditing ? 'Update' : 'Add'} </CustomButton>
@@ -87,5 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
+
 
 export default ManageExpenses
